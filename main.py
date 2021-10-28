@@ -16,6 +16,8 @@ y1 = 128
 x2 = 2537
 y2 = 660
 
+continue_btn = (1900, 536)
+
 
 def click(x, y):
     win32api.SetCursorPos((x, y))
@@ -65,6 +67,6 @@ while True:
         click(x1 + number[0], y1 + number[1])
         time.sleep(0.1)
 
-    click(1900, 536)
+    click(continue_btn[0], continue_btn[1])
 
     keyboard.wait('enter')
