@@ -27,15 +27,16 @@ def click(x, y):
 
 numbers = []
 
+#load images fron /Numbers/
 for i in range(len(os.listdir('./numbers/'))):
     numbers.append(cv2.imread(f'./numbers/{i+1}.png', 1))
 
 keyboard.wait('enter')
 
 while True:
-    #haystack image
     screen_shot = np.array(ImageGrab.grab(bbox=(x1, y1, x2, y2)))
-
+    
+    #positions to click
     number_positions = []
 
     for i in range(len(numbers)):
@@ -46,11 +47,13 @@ while True:
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 
         print(i + 1, max_loc, '|', max_val)
-
+        
+        #if found
         if max_val > 0.5:
-
+            #append position
             number_positions.append(max_loc)
-
+            
+            #draw clicking pos to screenshot
             cv2.putText(screen_shot, str(i + 1),
                 max_loc,
                 cv2.FONT_HERSHEY_SIMPLEX,
@@ -62,11 +65,13 @@ while True:
         img_pil = Image.fromarray(screen_shot)
         img_pil.show()
         keyboard.wait('enter')
-
+    
+    #click numbers in order
     for number in number_positions:
         click(x1 + number[0], y1 + number[1])
         time.sleep(0.1)
-
+    
+    #click continue
     click(continue_btn[0], continue_btn[1])
 
     keyboard.wait('enter')
