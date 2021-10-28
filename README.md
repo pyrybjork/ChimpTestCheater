@@ -9,7 +9,7 @@ Unless humans are allowed to use tools :)
 Currently it can automatically play stages with up to 30 numbers. This can be easily extended by simply adding pictures of the numbers to /Numbers/ folder.
 
 ### Usage
-Specify the bounding box of game area to `x1`, `y1`, `x2`, `y2` variables.
+Specify the bounding box of game area to `x1`, `y1`, `x2`, `y2` variables and continue button coordinates to `continue_btn`.
 
 If you want to see image of where it is going to click set `show` to `True`.
 
